@@ -150,6 +150,14 @@ OpenAPI source of truth: `lib/api-spec/openapi.yaml` (⚠️ abhi me sirf health
 
 _Format: `### [YYYY-MM-DD] — Task title` phir bullets: kya kiya, kaunsi files badli._
 
+### [2026-08-22] — GitHub repo connect + push
+- Remote `origin` = `https://github.com/jaatni816/adarsh_school.git` (pehle se set tha).
+- Current branch `fresh-main` ko `origin/fresh-main` par push kiya + upstream tracking set.
+- **Branch situation (dhyaan rakhna):** local `fresh-main` = GitHub `main` + 1 commit (`360bd72 agent`) — yahi active line of work hai. Local `main` branch purani/diverged history hai (43 commits alag, origin/main se mismatch) — use merge mat karna bina poochhe.
+- GitHub default branch `main` hai; agar fresh-main ka kaam main me chahiye to PR ya fast-forward kar sakte hain.
+- Network flaky tha (DNS `Could not resolve host: github.com` kabhi-kabhi aata hai) — push fail ho to retry karna.
+- Files changed: koi code nahi, sirf git push.
+
 ### [2026-08-22] — Project bootstrap + AGENT.md creation
 - Project ko fully explore/read kiya aur ye AGENT.md banayi.
 - Current state: frontend (7 pages + chatbot), backend (chat/admission/contact routes), email integration (Resend), AI chatbot (Groq) — sab working.

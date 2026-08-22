@@ -150,6 +150,11 @@ OpenAPI source of truth: `lib/api-spec/openapi.yaml` (⚠️ abhi me sirf health
 
 _Format: `### [YYYY-MM-DD] — Task title` phir bullets: kya kiya, kaunsi files badli._
 
+### [2026-08-22] — Aaj ke changes GitHub par push kiye
+- `281d4e1` (AGENT.md GitHub-connect log) ko origin/fresh-main par push kiya — ab local aur remote fully synced.
+- **Gotcha:** Push ke time Git LFS locking error aaya tha; fix: `git config lfs.<remote-url>/info/lfs.locksverify false` (repo-local set kar diya). Network flaky hai to push retry karna.
+- Files changed: `AGENT.md`.
+
 ### [2026-08-22] — GitHub repo connect + push
 - Remote `origin` = `https://github.com/jaatni816/adarsh_school.git` (pehle se set tha).
 - Current branch `fresh-main` ko `origin/fresh-main` par push kiya + upstream tracking set.

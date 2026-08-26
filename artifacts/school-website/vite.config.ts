@@ -6,10 +6,22 @@ import { defineConfig } from 'vite';
 import runtimeErrorOverlay from '@replit/vite-plugin-runtime-error-modal';
 
 const rawPort = process.env.PORT ?? '5173';
+const rawApiPort = process.env.API_PORT ?? '3001';
 const port = Number(rawPort);
+const apiPort = Number(rawApiPort);
 
 if (Number.isNaN(port) || port <= 0) {
   throw new Error(`Invalid PORT value: "${rawPort}"`);
+}
+
+if (Number.isNaN(apiPort) || apiPort <= 0) {
+  throw new Error(`Invalid API_PORT value: "${rawApiPort}"`);
+}
+
+if (port === apiPort) {
+  throw new Error(
+    `Web server port (${port}) must differ from API server port (${apiPort}).`,
+  );
 }
 
 const basePath = process.env.BASE_PATH ?? '/';
@@ -61,7 +73,7 @@ export default defineConfig({
     },
     proxy: {
       '/api': {
-        target: 'http://localhost:3001',
+        target: `http://localhost:${apiPort}`,
         changeOrigin: true,
       },
     },

@@ -169,4 +169,31 @@ _Format: `### [YYYY-MM-DD] — Task title` phir bullets: kya kiya, kaunsi files 
 - Files changed: `AGENT.md` (nayi).
 - Git state: last commit `1913c97` (chatbot + admission form + Windows support); uncommitted: `pnpm-lock.yaml`.
 
+### [2026-08-25] — Chatbot prompt fix
+- **System prompt strict banaya:** Ab sirf utna hi batata hai jitna pucha jaye — extra info nahi deta.
+- **Thinking tags fix kiye:** `<think>` tags ab properly remove hote hain reply se (frontend + backend dono).
+- **Tokens kam kiye:** `max_tokens` 512 se 256 kiya — short answers aayenge.
+- **Temperature kam kiya:** 0.7 se 0.5 — zyada precise answers aayenge.
+- Files changed: `ChatBot.tsx`, `chat.ts`
+
 <!-- NAYA TASK YAHAN SE UPAR ADD KARO (latest first) -->
+
+### [2026-08-25] — Contact form working + Windows fix
+- **Contact form wapas add kiya:** `Contact.tsx` mein full form add kiya — Name, Phone, Email, City, Subject, Message fields.
+- **Test kiya:** Backend server start karke contact form aur admission form dono test kiye — dono successfully email bhej rahe hain (`RESEND_API_KEY` se).
+- **Windows fix:** `api-server/package.json` mein `dev` script se `export NODE_ENV=development` hataya — Windows pe `export` kaam nahi karta.
+- Files changed: `Contact.tsx`, `api-server/package.json`
+
+### [2026-08-25] — Chatbot prompt strict rewrite
+- **Welcome message chhota kiya:** "Hello! Kya jaanna chahte hain?" — purana welcome message bahut lamba tha.
+- **Greeting rule add kiya:** "Hello/Hi" ka sirf greeting wapas do, school info mat do.
+- **System prompt bilkul minimal banaya:** Ab sirf rules + compact data hai — zyada info nahi hai.
+- **"Unsolicited" rule:** Kabhi bhi pura school description mat do bina puche.
+- Files changed: `ChatBot.tsx`, `chat.ts`
+
+### [2026-08-25] — Form backend fixes
+- **PORT mismatch fix kiya:** `.env` me `PORT=5000` tha lekin Vite proxy `localhost:3001` ko target kar raha tha — proxy ko dynamic PORT se match karaya (`vite.config.ts`).
+- **Contact form remove kiya:** `Contact.tsx` se form hataaya — ab sirf contact info cards + Google Map hai.
+- **Admission form error handling fix kiya:** Pehle silently localStorage me save ho raha tha bina error dikhaye — ab proper error message dikhta hai jab backend kaam na kare.
+- **`.env` clean kiya:** Duplicate `CONTACT_EMAIL` hataya, comments saaf kiye.
+- Files changed: `vite.config.ts`, `Contact.tsx`, `Admissions.tsx`, `.env`

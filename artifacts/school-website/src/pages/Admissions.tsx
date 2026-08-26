@@ -44,12 +44,9 @@ export default function Admissions() {
       if (!res.ok || !data.success) throw new Error(data.error ?? 'Something went wrong.');
       setStatus('success');
       setForm({ studentName: '', dob: '', mobile: '', classApplying: '', village: '', email: '', parentName: '' });
-    } catch {
-      const saved = JSON.parse(localStorage.getItem('admission_applications') ?? '[]');
-      saved.push({ ...form, submittedAt: new Date().toISOString() });
-      localStorage.setItem('admission_applications', JSON.stringify(saved));
-      setStatus('success');
-      setForm({ studentName: '', dob: '', mobile: '', classApplying: '', village: '', email: '', parentName: '' });
+    } catch (err) {
+      setStatus('error');
+      setErrorMsg(err instanceof Error ? err.message : 'Failed to submit application. Please try again.');
     }
   };
 

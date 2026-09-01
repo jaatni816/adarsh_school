@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import heroCampusImg from '@assets/Gemini_Generated_Image_cg9zk5cg9zk5cg9z_1784783539748.png';
 import studentsStudyingImg from '@assets/generated_images/students_studying.jpg';
+import { apiUrl } from '../lib/api';
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
 
@@ -35,7 +36,7 @@ export default function Admissions() {
     setStatus('loading');
     setErrorMsg('');
     try {
-      const res = await fetch('/api/admission', {
+      const res = await fetch(apiUrl('/api/admission'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),

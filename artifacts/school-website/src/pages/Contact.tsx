@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock, ExternalLink, Send, CheckCircle, AlertCircle, Loader2, User, MessageSquare } from 'lucide-react';
 import heroCampusImg from '@assets/Gemini_Generated_Image_cg9zk5cg9zk5cg9z_1784783539748.png';
+import { apiUrl } from '../lib/api';
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
 
@@ -30,7 +31,7 @@ export default function Contact() {
     setStatus('loading');
     setErrorMsg('');
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch(apiUrl('/api/contact'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),

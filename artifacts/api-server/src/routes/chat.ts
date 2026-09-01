@@ -55,17 +55,19 @@ router.post("/chat", async (req, res) => {
         { role: "system", content: SYSTEM_PROMPT },
         ...recentMessages,
       ],
-      max_tokens: 256,
+max_tokens: 1024,
       temperature: 0.5,
     });
 
     const raw = completion.choices[0]?.message?.content ?? "Koi jawab nahi mila.";
-    let reply = raw
-      .replace(/<think>[\s\S]*?<\/think>/gi, '')
+    // "qwen/qwen3.6-27b" is a reasoning model — it first emits a <thinking>
+    // block and the real answer comes after its closing tag. Grab that part.
+    let reply = raw.includes('</think>') ? raw.split('</think>').pop() ?? raw : raw;
+    reply = reply
+      .replace(/<\/?think[^>]*>/gi, '')
       .replace(/\n+/g, ' ')
       .replace(/\s+/g, ' ')
       .trim();
-    if (reply.includes('<think>')) reply = reply.split('<think>')[0].trim();
     if (!reply) reply = 'Kya jaanna chahte hain school ke baare mein?';
     res.json({ reply });
   } catch (err) {

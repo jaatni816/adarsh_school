@@ -1,38 +1,12 @@
 import { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Loader2, Bot, User } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { apiUrl } from '../lib/api';
 
 interface Message {
   role: 'user' | 'assistant';
   content: string;
 }
-
-const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY ?? '';
-
-const SYSTEM_PROMPT = `Tum Adarsh School ke chatbot ho. Tumhara kaam SIRF jawab dena hai — jitna pucha jaaye, utna hi bolo.
-
-CRITICAL RULES:
-- "Hello" ya "Hi" ka jawab sirf "Hello! Kya jaanna chahte hain?" do — koi school info mat do.
-- "Fees" puche toh sirf fees batao — aur kuch mat jodo.
-- "Admission" puche toh sirf admission steps batao.
-- "Location" puche toh sirf address batao.
-- "Contact" puche toh sirf phone/email batao.
-- Har jawab MAX 2 lines ka ho.
-- KABHI bhi pura school description mat do unsolicited.
-- KABHI bhi multiple topics ek saath mat jodo.
-- Think tags mat likho.
-- Hinglish mein bolo.
-- Polite raho lekin BILKUL short raho.
-- School se bahar ke sawaal pe: "Main sirf school info de sakta hun."
-
-SCHOOL DATA (sirf tab use karo jab pucha jaaye):
-Name: Adarsh Sr. Sec. School, Jakhouli
-Est: 1995 | BSEH
-Address: Jakhouli Kassan Road, Kaithal, Haryana
-Phone: +91 74041 20200
-Classes: VI-XII | Science, Commerce, Arts
-Admission: 15 March - 31 March
-Result 2024: 100% pass`;
 
 const WELCOME: Message = {
   role: 'assistant',
@@ -68,49 +42,25 @@ export default function ChatBot() {
     setLoading(true);
 
     try {
-      if (!GROQ_API_KEY) {
-        throw new Error('API_KEY_MISSING');
-      }
-
-      const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      const res = await fetch(apiUrl('/api/chat'), {
         method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${GROQ_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          model: 'qwen/qwen3.6-27b',
-          messages: [
-            { role: 'system', content: SYSTEM_PROMPT },
-            ...updated.slice(-10),
-          ],
-          max_tokens: 256,
-          temperature: 0.5,
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: updated.slice(-10) }),
       });
 
-      const data = await res.json() as {
-        choices?: Array<{ message?: { content?: string } }>;
-        error?: { message?: string };
+const data = await res.json() as {
+        reply?: string;
+        error?: string;
       };
 
-      if (data.error) {
-        throw new Error(data.error.message ?? 'API Error');
+      if (!res.ok || !data.reply) {
+        throw new Error(data.error ?? 'API Error');
       }
 
-      const raw = data.choices?.[0]?.message?.content ?? '';
-      let reply = raw
-        .replace(/<think>[\s\S]*?<\/think>/gi, '')
-        .replace(/\n+/g, ' ')
-        .replace(/\s+/g, ' ')
-        .trim();
-      if (reply.includes('<think>')) reply = reply.split('<think>')[0].trim();
-      if (!reply) reply = 'Kya jaanna chahte hain school ke baare mein?';
+      const reply = data.reply;
       setMessages((prev) => [...prev, { role: 'assistant', content: reply }]);
     } catch (err) {
-      const msg = err instanceof Error && err.message === 'API_KEY_MISSING'
-        ? 'API key set nahi hai. VITE_GROQ_API_KEY env variable set karein.'
-        : 'AI se connect nahi ho paya. Internet ya API key check karein.';
+      const msg = 'AI se connect nahi ho paya. Thodi der baad try karein.';
       setMessages((prev) => [...prev, { role: 'assistant', content: msg }]);
     } finally {
       setLoading(false);

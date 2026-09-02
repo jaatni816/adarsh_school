@@ -17,10 +17,11 @@ CRITICAL RULES:
 - "Admission" puche toh sirf admission steps batao.
 - "Location" puche toh sirf address batao.
 - "Contact" puche toh sirf phone/email batao.
-- - Jo bhi pucha jaye uska poora aur clear jawab do, 2-4 sentences mein — adhuri ya generic baat mat karo. Kabhi bhi "main kaise help kar sakta hoon" jaisa reply mat do, seedha sawal ka jawab do.
+- Jo bhi pucha jaye uska poora aur clear jawab do, 1-3 chhoti sentences mein — adhuri ya generic baat mat karo. Kabhi bhi "main kaise help kar sakta hoon" jaisa reply mat do, seedha sawal ka jawab do.
+- Numbered list ya bullet points mat do — simple seedha jawab do.
 - KABHI bhi pura school description mat do unsolicited.
 - KABHI bhi multiple topics ek saath mat jodo.
-- Think tags mat likho.
+- Think/analysis tags mat likho.
 - Hinglish mein bolo.
 - Polite raho lekin BILKUL short raho.
 - School se bahar ke sawaal pe: "Main sirf school info de sakta hun."
@@ -33,6 +34,34 @@ Phone: +91 74041 20200
 Classes: VI-XII | Science, Commerce, Arts
 Admission: 15 March - 31 March
 Result 2024: 100% pass`;
+
+function cleanReply(raw: string): string {
+  if (!raw) return "";
+
+  let reply = raw;
+
+  // Raw reasoning format: <thinking>...thinking...</thinking> final answer
+  reply = reply.replace(/<thinking>[\s\S]*?<\/thinking>/gi, "");
+
+  // Some reasoning models mark the final answer with a " response" marker
+  // (e.g. "... reasoning ... response"). Grab whatever comes after it.
+  const closeMarker = reply.indexOf(" response");
+  if (closeMarker >= 0) {
+    reply = reply.slice(closeMarker + " response".length);
+  }
+
+  // Strip any leftover think/open-style markers.
+  reply = reply
+    .replace(/<\/?think[^>]*>/gi, "")
+    .replace(/<\/?thinking[^>]*>/gi, "")
+    .replace(/<\|thinking\|>/gi, "")
+    .replace(/<\|(thinking\|?)/gi, "")
+    .replace(/\n+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  return reply;
+}
 
 router.post("/chat", async (req, res) => {
   const { messages } = req.body as {
@@ -55,20 +84,19 @@ router.post("/chat", async (req, res) => {
         { role: "system", content: SYSTEM_PROMPT },
         ...recentMessages,
       ],
-max_tokens: 1024,
+      // qwen3.6-27b ek reasoning model hai — default ("raw") format mein apna
+      // poora thinking process answer ke andar de deta hai. "hidden" sirf final
+      // answer deta hai aur "none" reasoning disable kar deta hai.
+      reasoning_format: "hidden",
+      reasoning_effort: "none",
+      max_tokens: 1024,
       temperature: 0.5,
     });
 
-    const raw = completion.choices[0]?.message?.content ?? "Koi jawab nahi mila.";
-    // "qwen/qwen3.6-27b" is a reasoning model — it first emits a <thinking>
-    // block and the real answer comes after its closing tag. Grab that part.
-    let reply = raw.includes('</think>') ? raw.split('</think>').pop() ?? raw : raw;
-    reply = reply
-      .replace(/<\/?think[^>]*>/gi, '')
-      .replace(/\n+/g, ' ')
-      .replace(/\s+/g, ' ')
-      .trim();
-    if (!reply) reply = 'Kya jaanna chahte hain school ke baare mein?';
+    const reply = cleanReply(
+      completion.choices[0]?.message?.content ?? "",
+    ) || "Kya jaanna chahte hain school ke baare mein?";
+
     res.json({ reply });
   } catch (err) {
     res.status(500).json({ error: "AI se connect nahi ho paya. Thodi der baad try karein." });

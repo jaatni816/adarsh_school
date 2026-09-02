@@ -178,6 +178,15 @@ _Format: `### [YYYY-MM-DD] — Task title` phir bullets: kya kiya, kaunsi files 
 
 <!-- NAYA TASK YAHAN SE UPAR ADD KARO (latest first) -->
 
+### [2026-09-02] — Chatbot "thinking process" leak fix + quick-suggestion bug fix
+- **Root cause:** `qwen/qwen3.6-27b` ek reasoning model hai — Groq default (`raw`) format mein apna poora thinking process `<thinking>...</thinking>` (ya `... response`) tags ke saath main content mein de deta hai. Purana strip logic sirf XML-style `<thinking>` tags handle karta tha, isliye poora "thinking process" answer ban ke aa raha tha.
+- **Fix:**
+  - `chat.ts`: `reasoning_format: "hidden"` + `reasoning_effort: "none"` add kiya — ab Groq sirf final answer deta hai. Cleanup function bhi robust banayi (raw/parsed dono formats handle karti hai).
+  - `ChatBot.tsx`: quick-suggestion button ka stale-state bug fix — ab `sendMessage(q)` direct argument se send hota hai (`setTimeout` wala purana hack hataaya jo empty input bhej raha tha). Duplicate-submit guard (`loadingRef`) + indentation fix.
+  - `lib/api.ts`: dev mode (`import.meta.env.DEV`) mein ab relative `/api` use hota hai → Vite proxy local backend ko hit karta hai; production mein Render URL purana hai. Pehle VITE_API_URL na hone par local test bhi deployed Render backend par jaata tha.
+- **Verified:** Real Groq call se `/api/chat` test kiya — Hello, fees, location, admission, non-school questions sab clean short answers de rahe hain.
+- Files changed: `chat.ts`, `ChatBot.tsx`, `lib/api.ts`, `AGENT.md`.
+
 ### [2026-08-25] — Contact form working + Windows fix
 - **Contact form wapas add kiya:** `Contact.tsx` mein full form add kiya — Name, Phone, Email, City, Subject, Message fields.
 - **Test kiya:** Backend server start karke contact form aur admission form dono test kiye — dono successfully email bhej rahe hain (`RESEND_API_KEY` se).

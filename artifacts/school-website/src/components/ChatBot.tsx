@@ -20,6 +20,7 @@ export default function ChatBot() {
   const [loading, setLoading] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const loadingRef = useRef(false);
 
   useEffect(() => {
     if (open) {
@@ -31,15 +32,16 @@ export default function ChatBot() {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, loading]);
 
-  const sendMessage = async () => {
-    const text = input.trim();
-    if (!text || loading) return;
+  const sendMessage = async (textOverride?: string) => {
+    const text = (textOverride ?? input).trim();
+    if (!text || loadingRef.current) return;
 
     const userMsg: Message = { role: 'user', content: text };
     const updated = [...messages, userMsg];
     setMessages(updated);
     setInput('');
     setLoading(true);
+    loadingRef.current = true;
 
     try {
       const res = await fetch(apiUrl('/api/chat'), {
@@ -48,7 +50,7 @@ export default function ChatBot() {
         body: JSON.stringify({ messages: updated.slice(-10) }),
       });
 
-const data = await res.json() as {
+      const data = await res.json() as {
         reply?: string;
         error?: string;
       };
@@ -62,8 +64,9 @@ const data = await res.json() as {
     } catch (err) {
       const msg = 'AI se connect nahi ho paya. Thodi der baad try karein.';
       setMessages((prev) => [...prev, { role: 'assistant', content: msg }]);
-    } finally {
+} finally {
       setLoading(false);
+      loadingRef.current = false;
     }
   };
 
@@ -184,7 +187,7 @@ const data = await res.json() as {
                 {['Admission kaise karein?', 'Fees kitni hai?', 'School ki location?'].map((q) => (
                   <button
                     key={q}
-                    onClick={() => { setInput(q); setTimeout(sendMessage, 50); }}
+                    onClick={() => sendMessage(q)}
                     className="text-xs px-3 py-1.5 rounded-full border border-secondary/30 text-secondary hover:bg-secondary hover:text-white transition-colors font-medium"
                   >
                     {q}
@@ -206,7 +209,7 @@ const data = await res.json() as {
                 className="flex-1 px-3.5 py-2.5 text-sm rounded-xl border border-border focus:outline-none focus:ring-2 focus:ring-secondary/40 focus:border-secondary bg-gray-50 focus:bg-white transition-colors disabled:opacity-50"
               />
               <button
-                onClick={sendMessage}
+                onClick={() => sendMessage()}
                 disabled={loading || !input.trim()}
                 className="w-10 h-10 rounded-xl bg-secondary text-white flex items-center justify-center hover:bg-secondary/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors shrink-0"
                 aria-label="Send"

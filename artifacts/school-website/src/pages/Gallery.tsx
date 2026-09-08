@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'wouter';
 import { X, ZoomIn, ChevronLeft, ChevronRight } from 'lucide-react';
+import SEO from '../components/SEO';
 import exteriorImg from '@assets/generated_images/exterior.jpg';
 import heroCampusImg from '@assets/Gemini_Generated_Image_cg9zk5cg9zk5cg9z_1784783539748.png';
 import prayerAssemblyImg from '@assets/generated_images/prayer_assembly.jpg';
@@ -63,16 +65,21 @@ export default function Gallery() {
 
   return (
     <div className="pt-[80px] md:pt-[90px] pb-20 w-full min-h-screen">
+      <SEO
+        title="Photo Gallery"
+        path="/gallery"
+        description="Browse photos of Adarsh Sr. Sec. School, Jakhouli, Kaithal — campus life, morning assemblies, sports events, annual functions, student achievements and school activities."
+      />
 
       {/* Header */}
-      <div className="bg-primary text-white py-16 px-4 md:px-8 relative overflow-hidden">
+      <header className="bg-primary text-white py-16 px-4 md:px-8 relative overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroCampusImg} alt="" className="w-full h-full object-cover object-center opacity-90" />
+          <img src={heroCampusImg} alt="Adarsh Sr. Sec. School campus building, Jakhouli, Kaithal" className="w-full h-full object-cover object-center opacity-90" />
           <div className="absolute inset-0 bg-primary/35" />
         </div>
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-serif font-bold text-white mb-3">
+            className="text-fluid-header font-serif font-bold text-white mb-3">
             Photo Gallery
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
@@ -82,7 +89,7 @@ export default function Gallery() {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
             className="w-20 h-1.5 bg-secondary rounded-full mt-4" />
         </div>
-      </div>
+      </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
 
@@ -133,7 +140,7 @@ export default function Gallery() {
                   <div className="flex justify-between items-end">
                     <div>
                       <span className="text-secondary text-xs font-bold uppercase tracking-wider mb-1 block">{img.category}</span>
-                      <h4 className="text-white font-semibold text-sm">{img.title}</h4>
+                      <h2 className="text-white font-semibold text-sm">{img.title}</h2>
                     </div>
                     <div className="w-9 h-9 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
                       <ZoomIn className="text-white w-5 h-5" />
@@ -150,6 +157,19 @@ export default function Gallery() {
             <p className="text-lg">No photos in this category.</p>
           </div>
         )}
+
+        {/* Visit CTA */}
+        <div className="text-center mt-14">
+          <h2 className="text-2xl font-serif font-bold text-primary mb-3">Visit Our Campus</h2>
+          <p className="text-muted-foreground max-w-xl mx-auto mb-6">
+            Want to see our campus in person? We would love to welcome you and your family.
+          </p>
+          <Link href="/contact">
+            <span className="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-white font-bold rounded-lg shadow-lg hover:bg-secondary/90 hover:scale-105 transition-all cursor-pointer">
+              Contact Us to Plan a Visit
+            </span>
+          </Link>
+        </div>
       </div>
 
       {/* Lightbox with scroll navigation */}
@@ -213,7 +233,7 @@ export default function Gallery() {
             </div>
 
             {/* Thumbnail strip */}
-            <div className="absolute bottom-14 md:bottom-16 left-1/2 -translate-x-1/2 flex gap-2 px-4">
+            <div className="absolute bottom-14 md:bottom-16 left-1/2 -translate-x-1/2 flex gap-2 px-4 max-w-full overflow-x-auto">
               {filteredImages.map((img, i) => (
                 <button
                   key={img.src}
@@ -222,7 +242,7 @@ export default function Gallery() {
                     i === selectedIndex ? 'border-secondary scale-110' : 'border-white/20 opacity-50 hover:opacity-80'
                   }`}
                 >
-                  <img src={img.src} alt={img.title} className="w-full h-full object-cover" />
+                  <img src={img.src} alt={img.title} loading="lazy" className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>

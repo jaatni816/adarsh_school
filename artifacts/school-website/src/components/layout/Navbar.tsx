@@ -44,11 +44,11 @@ export function Navbar() {
               alt="Adarsh School Logo" 
               className="w-12 h-12 md:w-16 md:h-16 object-contain group-hover:scale-105 transition-transform"
             />
-            <div className="flex flex-col">
-              <span className="font-serif font-bold text-lg md:text-2xl text-primary leading-tight">
+            <div className="flex flex-col min-w-0">
+              <span className="font-serif font-bold text-base sm:text-lg md:text-2xl text-primary leading-tight truncate">
                 Adarsh Sr. Sec. School
               </span>
-              <span className="text-xs md:text-sm text-secondary font-medium tracking-wide">
+              <span className="text-[10px] sm:text-xs md:text-sm text-secondary font-medium tracking-wide truncate">
                 Est. 1995 • Jakhouli, Kaithal
               </span>
             </div>
@@ -106,7 +106,7 @@ export function Navbar() {
             className="lg:hidden bg-white border-t border-border overflow-hidden absolute w-full shadow-lg"
             style={{ top: isScrolled ? '100%' : 'calc(100% + 36px)' }}
           >
-            <div className="px-4 py-6 flex flex-col gap-4">
+            <nav className="px-4 py-6 flex flex-col gap-4">
               {NAV_LINKS.map((link) => (
                 <Link key={link.href} href={link.href}>
                   <span className={`block text-lg font-medium py-2 px-3 rounded-md border-b border-border/50 ${
@@ -123,7 +123,7 @@ export function Navbar() {
                   Apply Now
                 </span>
               </Link>
-            </div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>

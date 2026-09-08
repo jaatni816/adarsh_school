@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GraduationCap, Award } from 'lucide-react';
+import { Link } from 'wouter';
+import { GraduationCap, Award, ArrowRight } from 'lucide-react';
+import SEO from '../components/SEO';
 import exteriorImg from '@assets/generated_images/exterior.jpg';
 
 const facultyList = [
@@ -51,16 +53,21 @@ const facultyList = [
 export default function Faculty() {
   return (
     <div className="pt-[80px] md:pt-[90px] pb-20 w-full min-h-screen">
+      <SEO
+        title="Faculty & Staff"
+        path="/faculty"
+        description="Meet the dedicated faculty of Adarsh Sr. Sec. School, Jakhouli, Kaithal — BSEH-certified, experienced teachers with 8-20 years of expertise shaping rural Haryana's future."
+      />
 
       {/* Header */}
-      <div className="bg-primary text-white py-16 px-4 md:px-8 relative overflow-hidden">
+      <header className="bg-primary text-white py-16 px-4 md:px-8 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
-          <img src={exteriorImg} alt="" className="w-full h-full object-cover" />
+          <img src={exteriorImg} alt="Adarsh Sr. Sec. School building exterior, Jakhouli, Kaithal" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-primary/80" />
         </div>
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-serif font-bold mb-3">
+            className="text-fluid-header font-serif font-bold mb-3">
             Faculty & Staff
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
@@ -70,7 +77,7 @@ export default function Faculty() {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
             className="w-20 h-1.5 bg-secondary rounded-full mt-4" />
         </div>
-      </div>
+      </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
 
@@ -100,7 +107,7 @@ export default function Faculty() {
                 </div>
               </div>
               <div className="p-6 text-center">
-                <h4 className="text-xl font-bold text-primary font-serif mb-1">{staff.name}</h4>
+                <h3 className="text-xl font-bold text-primary font-serif mb-1">{staff.name}</h3>
                 <span className="text-sm font-semibold text-secondary block mb-1">{staff.role}</span>
                 <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full inline-block mb-3">{staff.subject}</span>
                 <div className="flex justify-center gap-4 text-xs text-muted-foreground border-t border-border pt-3 mt-1">
@@ -131,6 +138,18 @@ export default function Faculty() {
                 <p className="text-muted-foreground text-sm">{item.desc}</p>
               </div>
             ))}
+          </div>
+          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/admissions">
+              <span className="inline-flex items-center gap-2 px-7 py-3 bg-secondary text-white font-bold rounded-lg shadow-md hover:bg-secondary/90 transition-all cursor-pointer">
+                Enroll with Our Teachers <ArrowRight className="w-4 h-4" />
+              </span>
+            </Link>
+            <Link href="/contact">
+              <span className="inline-flex items-center gap-2 px-7 py-3 bg-primary text-white font-bold rounded-lg shadow-md hover:bg-primary/90 transition-all cursor-pointer">
+                Contact the School
+              </span>
+            </Link>
           </div>
         </div>
 

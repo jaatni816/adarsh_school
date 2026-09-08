@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, History, Target, Shield, Heart, Users, BookOpen, Trophy, GraduationCap } from 'lucide-react';
+import { Link } from 'wouter';
+import { CheckCircle2, History, Target, Shield, Heart, Users, BookOpen, Trophy, GraduationCap, ArrowRight } from 'lucide-react';
+import SEO from '../components/SEO';
 import exteriorImg from '@assets/generated_images/exterior.jpg';
 import heroCampusImg from '@assets/Gemini_Generated_Image_cg9zk5cg9zk5cg9z_1784783539748.png';
 import prayerAssemblyImg from '@assets/generated_images/prayer_assembly.jpg';
@@ -22,16 +24,21 @@ const milestones = [
 export default function About() {
   return (
     <div className="pt-[80px] md:pt-[90px] pb-20 w-full min-h-screen">
+      <SEO
+        title="About Us"
+        path="/about"
+        description="Learn about Adarsh Sr. Sec. School, Jakhouli, Kaithal — our 28+ year legacy, vision, mission, milestones and core values shaping rural education in Haryana."
+      />
 
       {/* Page Header */}
-      <div className="bg-primary text-white py-16 px-4 md:px-8 relative overflow-hidden">
+      <header className="bg-primary text-white py-16 px-4 md:px-8 relative overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroCampusImg} alt="" className="w-full h-full object-cover object-center opacity-90" />
+          <img src={heroCampusImg} alt="Adarsh Sr. Sec. School campus building, Jakhouli, Kaithal" className="w-full h-full object-cover object-center opacity-90" />
           <div className="absolute inset-0 bg-primary/35" />
         </div>
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-serif font-bold text-white mb-3">
+            className="text-fluid-header font-serif font-bold text-white mb-3">
             About Us
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}
@@ -41,7 +48,7 @@ export default function About() {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
             className="w-20 h-1.5 bg-secondary rounded-full mt-4" />
         </div>
-      </div>
+      </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 space-y-24">
 
@@ -78,6 +85,7 @@ export default function About() {
               <img
                 src={elearningFounderImg}
                 alt="Dr. Devender Arya, founder of Elearning Pathshala"
+                loading="lazy"
                 className="relative z-10 max-h-[330px] w-auto max-w-full rounded-2xl bg-white/85 p-2 object-contain object-bottom shadow-2xl ring-1 ring-primary/10"
               />
             </div>
@@ -96,7 +104,7 @@ export default function About() {
                 Established in <strong>1995</strong>, Adarsh Senior Secondary School was born out of a noble vision to bring high-quality, holistic education to the rural heartland of Haryana. Located in the peaceful village of <strong>Jakhouli, Kaithal</strong>, we started with a modest building and a handful of dedicated teachers who believed every child deserved the best.
               </p>
               <p>
-                Over the past 28+ years, we have grown into a premier institution recognized by the <strong>Board of School Education Haryana (BSEH)</strong>. We have proudly educated thousands of students who have gone on to excel in fields ranging from medicine, engineering, and civil services to agriculture and entrepreneurship.
+                Over the past 28+ years, we have grown into a premier institution recognized by the <strong>Board of School Education Haryana (BSEH)</strong>. We have proudly educated thousands of students who have gone on to excel in fields ranging from medicine, engineering, and civil services to agriculture and entrepreneurship — all nurtured through our comprehensive <Link href="/academics"><span className="text-primary font-semibold hover:text-secondary cursor-pointer underline">academic programs</span></Link> from Class VI to XII.
               </p>
               <p>
                 Our roots are deeply Indian, and we pride ourselves on maintaining a balance between modern pedagogical methods and traditional moral values. The school stands as a pillar of education for the entire Jakhouli and Kaithal region.
@@ -108,7 +116,7 @@ export default function About() {
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative">
             <div className="absolute -inset-4 bg-primary/5 rounded-2xl rotate-2" />
-            <img src={exteriorImg} alt="Adarsh School Building" className="relative rounded-2xl shadow-xl w-full object-cover aspect-[4/3]" />
+            <img src={exteriorImg} alt="Adarsh School Building" loading="lazy" className="relative rounded-2xl shadow-xl w-full object-cover aspect-[4/3]" />
             <div className="absolute -bottom-5 -right-5 bg-secondary text-white px-5 py-3 rounded-xl shadow-lg font-bold text-sm">
               Est. 1995 &bull; Jakhouli, Kaithal
             </div>
@@ -200,15 +208,15 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
               className="rounded-2xl overflow-hidden shadow-lg aspect-[4/3]">
-              <img src={prayerAssemblyImg} alt="Morning Prayer Assembly" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <img src={prayerAssemblyImg} alt="Morning Prayer Assembly" loading="lazy" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
               className="rounded-2xl overflow-hidden shadow-lg aspect-[4/3]">
-              <img src={classroomImg} alt="Smart Classroom" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <img src={classroomImg} alt="Smart Classroom" loading="lazy" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
               className="rounded-2xl overflow-hidden shadow-lg aspect-[4/3]">
-              <img src={annualFunctionImg} alt="Annual Function" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <img src={annualFunctionImg} alt="Annual Function" loading="lazy" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </motion.div>
           </div>
         </div>
@@ -231,6 +239,19 @@ export default function About() {
           </div>
         </div>
 
+        {/* ── Admissions CTA ── */}
+        <div className="text-center">
+          <h2 className="text-2xl font-serif font-bold text-primary mb-3">Join the Adarsh Family</h2>
+          <p className="text-muted-foreground max-w-xl mx-auto mb-6">
+            Admissions are open for the new session. Give your child the gift of quality education.
+          </p>
+          <Link href="/admissions">
+            <span className="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-white font-bold rounded-lg shadow-lg hover:bg-secondary/90 hover:scale-105 transition-all cursor-pointer">
+              Apply for Admission <ArrowRight className="w-5 h-5" />
+            </span>
+          </Link>
+        </div>
+
         {/* ── Core Values ── */}
         <div>
           <div className="text-center mb-12">
@@ -251,7 +272,7 @@ export default function About() {
                 <div className="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center shadow-sm mb-4">
                   <val.icon className="w-8 h-8 text-secondary" />
                 </div>
-                <h4 className="text-xl font-bold text-primary mb-2 font-serif">{val.title}</h4>
+                <h3 className="text-xl font-bold text-primary mb-2 font-serif">{val.title}</h3>
                 <p className="text-sm text-foreground/70 leading-relaxed">{val.desc}</p>
               </motion.div>
             ))}

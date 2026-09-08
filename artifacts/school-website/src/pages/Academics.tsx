@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'wouter';
 import { Book, Microscope, Calculator, Globe, Code, Palette, CheckCircle2, TrendingUp } from 'lucide-react';
+import SEO from '../components/SEO';
 import scienceLabImg from '@assets/generated_images/science_lab.jpg';
 import libraryImg from '@assets/generated_images/library.jpg';
 import computerLabImg from '@assets/generated_images/computer_lab.jpg';
@@ -13,16 +15,21 @@ import sportsDayImg from '@assets/generated_images/sports_day.jpg';
 export default function Academics() {
   return (
     <div className="pt-[80px] md:pt-[90px] pb-20 w-full min-h-screen">
+      <SEO
+        title="Academics"
+        path="/academics"
+        description="BSEH-affiliated academics at Adarsh Sr. Sec. School, Jakhouli, Kaithal — Classes VI to XII with Science, Commerce & Arts streams. Smart classrooms, science labs, and expert faculty."
+      />
 
       {/* Header */}
-      <div className="bg-primary text-white py-16 px-4 md:px-8 relative overflow-hidden">
+      <header className="bg-primary text-white py-16 px-4 md:px-8 relative overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroCampusImg} alt="" className="w-full h-full object-cover object-center opacity-90" />
+          <img src={heroCampusImg} alt="Adarsh Sr. Sec. School campus building, Jakhouli, Kaithal" className="w-full h-full object-cover object-center opacity-90" />
           <div className="absolute inset-0 bg-primary/35" />
         </div>
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-serif font-bold text-white mb-3">
+            className="text-fluid-header font-serif font-bold text-white mb-3">
             Academics
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
@@ -32,7 +39,7 @@ export default function Academics() {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
             className="w-20 h-1.5 bg-secondary rounded-full mt-4" />
         </div>
-      </div>
+      </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 space-y-20">
 
@@ -42,7 +49,7 @@ export default function Academics() {
             <h2 className="text-3xl font-serif font-bold text-primary mb-5">Curriculum Overview</h2>
             <div className="space-y-4 text-foreground/80 leading-relaxed text-base">
               <p>
-                Adarsh Senior Secondary School is affiliated to the <strong>Board of School Education Haryana (BSEH)</strong>. We offer a comprehensive and rigorous academic program from <strong>Classes VI to XII</strong>, designed to prepare students for higher education and competitive examinations like JEE, NEET, CA Foundation, and UPSC.
+                Adarsh Senior Secondary School is affiliated to the <strong>Board of School Education Haryana (BSEH)</strong>. We offer a comprehensive and rigorous academic program from <strong>Classes VI to XII</strong>, designed to prepare students for higher education and competitive examinations like JEE, NEET, CA Foundation, and UPSC. Admissions for the upcoming session are now open — <Link href="/admissions"><span className="text-primary font-semibold hover:text-secondary cursor-pointer underline">apply here</span></Link> to secure your child's seat.
               </p>
               <p>
                 Our teaching methodology blends traditional chalkboard instruction with modern digital aids, ensuring concepts are understood deeply rather than rote-learned. Every student at Adarsh School is treated as an individual — their strengths nurtured, their weaknesses addressed with patience and care.
@@ -66,7 +73,7 @@ export default function Academics() {
             </div>
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-            <img src={studentsStudyingImg} alt="Students Studying" className="rounded-2xl shadow-xl w-full object-cover aspect-[4/3]" />
+            <img src={studentsStudyingImg} alt="Students Studying" loading="lazy" className="rounded-2xl shadow-xl w-full object-cover aspect-[4/3]" />
           </motion.div>
         </div>
 
@@ -74,7 +81,7 @@ export default function Academics() {
         <div className="bg-primary rounded-2xl p-8 md:p-12 text-white">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-serif font-bold mb-3">Board Examination Results</h2>
-            <p className="text-primary-foreground/75 max-w-xl mx-auto">Adarsh School consistently ranks among the top institutions in Kaithal district for BSEH Board results.</p>
+            <p className="text-primary-foreground/75 max-w-xl mx-auto">Adarsh School consistently ranks among the top institutions in Kaithal district for BSEH Board results — a testament to the dedication of our <Link href="/faculty"><span className="text-accent font-semibold hover:underline cursor-pointer">expert faculty</span></Link>.</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
@@ -198,7 +205,7 @@ export default function Academics() {
                 className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group"
               >
                 <div className="h-44 overflow-hidden">
-                  <img src={f.img} alt={f.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <img src={f.img} alt={f.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <div className="p-6">
                   <h3 className="text-lg font-bold text-primary mb-2 font-serif">{f.title}</h3>

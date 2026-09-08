@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock, ExternalLink, Send, CheckCircle, AlertCircle, Loader2, User, MessageSquare } from 'lucide-react';
+import SEO from '../components/SEO';
 import heroCampusImg from '@assets/Gemini_Generated_Image_cg9zk5cg9zk5cg9z_1784783539748.png';
 import { apiUrl } from '../lib/api';
 
@@ -48,16 +49,21 @@ export default function Contact() {
 
   return (
     <div className="pt-[80px] md:pt-[90px] pb-20 w-full min-h-screen bg-gray-50/50">
+      <SEO
+        title="Contact Us"
+        path="/contact"
+        description="Contact Adarsh Sr. Sec. School, Jakhouli, Kaithal, Haryana — phone, email, address and Google Maps. Office hours: Mon-Sat 8 AM–4 PM. Call +91 74041 20200."
+      />
 
       {/* Hero */}
-      <div className="bg-primary text-white py-16 px-4 md:px-8 relative overflow-hidden">
+      <header className="bg-primary text-white py-16 px-4 md:px-8 relative overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroCampusImg} alt="" className="w-full h-full object-cover object-center opacity-90" />
+          <img src={heroCampusImg} alt="Adarsh Sr. Sec. School campus building, Jakhouli, Kaithal" className="w-full h-full object-cover object-center opacity-90" />
           <div className="absolute inset-0 bg-primary/35" />
         </div>
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-serif font-bold text-white mb-3">
+            className="text-fluid-header font-serif font-bold text-white mb-3">
             Contact Us
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
@@ -67,7 +73,7 @@ export default function Contact() {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
             className="w-20 h-1.5 bg-secondary rounded-full mt-4" />
         </div>
-      </div>
+      </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 space-y-10">
 
@@ -119,7 +125,7 @@ export default function Contact() {
           <div className="rounded-xl overflow-hidden shadow-lg border border-border">
             <div className="bg-primary px-5 py-3 flex items-center gap-2">
               <MapPin className="w-4 h-4 text-secondary shrink-0" />
-              <span className="text-sm font-semibold text-white">
+              <span className="flex-1 min-w-0 truncate text-sm font-semibold text-white">
                 Adarsh Sr. Sec. School — Jakhouli Kassan Road, Jakhouli, Kaithal, Haryana
               </span>
               <a
@@ -135,7 +141,7 @@ export default function Contact() {
               src={MAPS_EMBED}
               width="100%"
               height="500"
-              style={{ border: 0 }}
+              className="w-full border-0 h-[280px] sm:h-[400px] lg:h-[500px]"
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

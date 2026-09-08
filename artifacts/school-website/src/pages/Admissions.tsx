@@ -5,6 +5,7 @@ import {
   Send, CheckCircle, AlertCircle, Loader2, User, Phone, Mail,
   BookOpen, MapPin, Calendar, Users,
 } from 'lucide-react';
+import SEO from '../components/SEO';
 import heroCampusImg from '@assets/Gemini_Generated_Image_cg9zk5cg9zk5cg9z_1784783539748.png';
 import studentsStudyingImg from '@assets/generated_images/students_studying.jpg';
 import { apiUrl } from '../lib/api';
@@ -53,16 +54,21 @@ export default function Admissions() {
 
   return (
     <div className="pt-[80px] md:pt-[90px] pb-20 w-full min-h-screen bg-gray-50/50">
+      <SEO
+        title="Admissions 2025-26"
+        path="/admissions"
+        description="Apply for admission at Adarsh Sr. Sec. School, Jakhouli, Kaithal — Classes VI to XII. Online application, step-by-step process, documents required, and important dates for session 2025-26."
+      />
 
       {/* Header */}
-      <div className="bg-primary text-white py-16 px-4 md:px-8 relative overflow-hidden">
+      <header className="bg-primary text-white py-16 px-4 md:px-8 relative overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroCampusImg} alt="" className="w-full h-full object-cover object-center opacity-90" />
+          <img src={heroCampusImg} alt="Adarsh Sr. Sec. School campus building, Jakhouli, Kaithal" className="w-full h-full object-cover object-center opacity-90" />
           <div className="absolute inset-0 bg-primary/35" />
         </div>
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-serif font-bold text-white mb-3">
+            className="text-fluid-header font-serif font-bold text-white mb-3">
             Admissions 2025-26
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
@@ -72,7 +78,7 @@ export default function Admissions() {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
             className="w-20 h-1.5 bg-secondary rounded-full mt-4" />
         </div>
-      </div>
+      </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -82,7 +88,7 @@ export default function Admissions() {
 
             {/* Photo + intro */}
             <div className="rounded-2xl overflow-hidden shadow-lg">
-              <img src={studentsStudyingImg} alt="Students at Adarsh School" className="w-full h-64 object-cover" />
+              <img src={studentsStudyingImg} alt="Students at Adarsh School" loading="lazy" className="w-full aspect-[16/9] md:aspect-[21/9] object-cover" />
               <div className="bg-white border border-border p-6">
                 <p className="text-foreground/80 leading-relaxed">
                   Adarsh Senior Secondary School, Jakhouli, Kaithal welcomes students from Class VI onwards. We are committed to providing every student in the Kaithal district access to quality BSEH-affiliated education in a safe, nurturing environment. Join 1,200+ students and 45+ dedicated teachers who make Adarsh School a centre of excellence in rural Haryana.
@@ -265,7 +271,7 @@ export default function Admissions() {
                   >
                     <div className="text-4xl font-bold text-primary/10 font-serif leading-none shrink-0">{item.step}</div>
                     <div>
-                      <h4 className="text-lg font-bold text-primary mb-1">{item.title}</h4>
+                      <h3 className="text-lg font-bold text-primary mb-1">{item.title}</h3>
                       <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
                     </div>
                   </motion.div>

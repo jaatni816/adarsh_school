@@ -150,6 +150,16 @@ OpenAPI source of truth: `lib/api-spec/openapi.yaml` (⚠️ abhi me sirf health
 
 _Format: `### [YYYY-MM-DD] — Task title` phir bullets: kya kiya, kaunsi files badli._
 
+### [2026-09-05] — Site fully responsive banaya (mobile/tablet/desktop)
+- **Viewport meta:** `school-website/index.html` aur `mockup-sandbox/index.html` me `maximum-scale=1` hata kar strick `<meta name="viewport" content="width=device-width, initial-scale=1.0">` set kiya (accessibility/pinch-zoom fix). `attached_assets/principal_*.html` me viewport already tha.
+- **CSS (`index.css`):** mobile/tablet/laptop ke media queries add kiye — `@media (max-width:480px)` document `font-size:15px` , `max-width:768px` par `15.5px` + `body{overflow-x:hidden}`, `max-width:1024px` par `.pattern-bg` compact. Base layer me `img/video/iframe/embed/object { max-width:100% }` + `img,video { height:auto }` add kiya (utility classes override karti hain, isliye object-cover layouts safe).
+- **Fluid typography (`clamp()`):** Tailwind v4 `@utility` classes `text-fluid-hero` (`clamp(1.875rem, 5vw+1rem, 3.75rem)`) aur `text-fluid-header` banaye; Home hero + About/Academics/Gallery/Faculty/Admissions/Contact page headers par apply kiye.
+- **Fixed pixel → relative:** ChatBot widget `w-[350px]`/`height:520px` ko `w-[min(380px,calc(100vw-2rem))] h-[min(520px,calc(100dvh-2rem))]` kiya + button/position `bottom-4 right-4 sm:bottom-6 sm:right-6` — ab iPhone SE (320px) pe bhi overflow nahi. Contact map iframe fixed `height:500` → `h-[280px] sm:h-[400px] lg:h-[500px]`. Admissions photo `h-64` → responsive `aspect-[16/9] md:aspect-[21/9]`.
+- **Navbar:** mobile pe brand text scale-down + `truncate` (`text-base sm:text-lg md:text-2xl`, tagline `text-[10px] sm:text-xs md:text-sm`). Hamburger menu pehle se tha (`lg:hidden` toggle + drawer), isliye wahi rakha.
+- **Gallery:** lightbox thumbnail strip par `max-w-full overflow-x-auto` taaki chhoti screens pe horizontal overflow na ho. Contact map header label truncate.
+- **Verified:** `tsc --noEmit` + `vite build` pass, compiled CSS me `@media (max-width:480/768/1024px)`, `.text-fluid-hero/header`, `overflow-x:hidden` confirm kiye; `vite preview` par page 200 + viewport meta sahi. Browsershot/headless browser available nahi tha isliye visual screenshots nahi le paye.
+- Files changed: `index.html`, `mockup-sandbox/index.html`, `src/index.css`, `components/layout/Navbar.tsx`, `components/ChatBot.tsx`, `pages/Home.tsx`, `pages/About.tsx`, `pages/Academics.tsx`, `pages/Gallery.tsx`, `pages/Faculty.tsx`, `pages/Admissions.tsx`, `pages/Contact.tsx`, `AGENT.md`.
+
 ### [2026-08-22] — Aaj ke changes GitHub par push kiye
 - `281d4e1` (AGENT.md GitHub-connect log) ko origin/fresh-main par push kiya — ab local aur remote fully synced.
 - **Gotcha:** Push ke time Git LFS locking error aaya tha; fix: `git config lfs.<remote-url>/info/lfs.locksverify false` (repo-local set kar diya). Network flaky hai to push retry karna.

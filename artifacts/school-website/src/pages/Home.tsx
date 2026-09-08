@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Link } from 'wouter';
 import { BookOpen, Trophy, Users, GraduationCap, ChevronRight, ChevronLeft, ArrowRight, Star, Award, Leaf, X, ZoomIn } from 'lucide-react';
+import SEO from '../components/SEO';
 import logoImg from '@assets/generated_images/logo.png';
 import heroBannerImg from '@assets/Gemini_Generated_Image_cg9zk5cg9zk5cg9z_1784783539748.png';
 import classroomImg from '@assets/generated_images/classroom.jpg';
@@ -81,6 +82,11 @@ export default function Home() {
 
   return (
     <div className="flex flex-col w-full">
+      <SEO
+        title="Home"
+        path="/"
+        description="Adarsh Sr. Sec. School, Jakhouli, Kaithal, Haryana — Nurturing rural talent with quality BSEH-affiliated education since 1995. 1200+ students, 45+ teachers, 100% pass rate."
+      />
 
       {/* ── Hero Section ── */}
       <section className="relative min-h-screen w-full bg-primary flex items-center justify-center overflow-hidden">
@@ -109,7 +115,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.25 }}
-            className="text-3xl sm:text-5xl md:text-6xl font-bold text-white font-serif mb-4 drop-shadow-lg leading-tight"
+            className="text-fluid-hero font-bold text-white font-serif mb-4 drop-shadow-lg"
           >
             Adarsh Senior Secondary
             <br />
@@ -180,9 +186,9 @@ export default function Home() {
                   <div className="w-12 h-12 md:w-14 md:h-14 bg-primary/10 text-primary rounded-full flex items-center justify-center mb-3">
                     <Icon className="w-6 h-6 md:w-7 md:h-7" />
                   </div>
-                  <h3 className="text-2xl md:text-4xl font-bold text-primary font-serif mb-1">
+                  <h2 className="text-2xl md:text-4xl font-bold text-primary font-serif mb-1">
                     <CountUp end={stat.value} suffix={stat.suffix} />
-                  </h3>
+                  </h2>
                   <p className="text-muted-foreground font-medium text-xs md:text-sm">{stat.label}</p>
                 </motion.div>
               );
@@ -219,7 +225,7 @@ export default function Home() {
                     <BookOpen className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-primary mb-1">HBSE Affiliated</h4>
+                    <h3 className="font-bold text-primary mb-1">HBSE Affiliated</h3>
                     <p className="text-sm text-muted-foreground">State board curriculum for holistic growth.</p>
                   </div>
                 </div>
@@ -228,7 +234,7 @@ export default function Home() {
                     <Trophy className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-primary mb-1">Excellent Results</h4>
+                    <h3 className="font-bold text-primary mb-1">Excellent Results</h3>
                     <p className="text-sm text-muted-foreground">Consistent top performers in Kaithal district.</p>
                   </div>
                 </div>
@@ -265,7 +271,7 @@ export default function Home() {
                 onClick={() => setLightbox(i)}
                 className="relative rounded-xl overflow-hidden aspect-square group shadow-md hover:shadow-xl transition-all cursor-pointer focus:outline-none focus:ring-4 focus:ring-secondary/50"
               >
-                <img src={item.img} alt={item.label} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                <img src={item.img} alt={item.label} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-end justify-between p-3">
                   <ZoomIn className="w-6 h-6 text-white drop-shadow" />
@@ -309,7 +315,7 @@ export default function Home() {
                 className="group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 bg-white"
               >
                 <div className="relative h-48 overflow-hidden">
-                  <img src={facility.img} alt={facility.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <img src={facility.img} alt={facility.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
                 <div className="p-6">

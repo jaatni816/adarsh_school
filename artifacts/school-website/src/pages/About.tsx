@@ -25,9 +25,9 @@ export default function About() {
   return (
     <div className="pt-[80px] md:pt-[90px] pb-20 w-full min-h-screen">
       <SEO
-        title="About Us"
+        title="About Adarsh Sr. Sec. School Jakhouli — BSEH Affiliated School Kaithal"
         path="/about"
-        description="Learn about Adarsh Sr. Sec. School, Jakhouli, Kaithal — our 28+ year legacy, vision, mission, milestones and core values shaping rural education in Haryana."
+        description="Learn about Adarsh Sr. Sec. School Jakhouli — a BSEH affiliated school in Kaithal, Haryana, with 28+ years of legacy. Vision, mission, milestones and core values of the best school in Kaithal district."
       />
 
       {/* Page Header */}
@@ -101,10 +101,10 @@ export default function About() {
             </div>
             <div className="space-y-4 text-foreground/80 leading-relaxed text-base">
               <p>
-                Established in <strong>1995</strong>, Adarsh Senior Secondary School was born out of a noble vision to bring high-quality, holistic education to the rural heartland of Haryana. Located in the peaceful village of <strong>Jakhouli, Kaithal</strong>, we started with a modest building and a handful of dedicated teachers who believed every child deserved the best.
+                Established in <strong>1995</strong>, Adarsh Senior Secondary School was born out of a noble vision to bring high-quality, holistic education to the rural heartland of Haryana. As a <strong>BSEH affiliated school in Jakhouli</strong>, Kaithal, we started with a modest building and a handful of dedicated teachers who believed every child deserved the best.
               </p>
               <p>
-                Over the past 28+ years, we have grown into a premier institution recognized by the <strong>Board of School Education Haryana (BSEH)</strong>. We have proudly educated thousands of students who have gone on to excel in fields ranging from medicine, engineering, and civil services to agriculture and entrepreneurship — all nurtured through our comprehensive <Link href="/academics"><span className="text-primary font-semibold hover:text-secondary cursor-pointer underline">academic programs</span></Link> from Class VI to XII.
+                Over the past 28+ years, we have grown into one of the best schools in Kaithal — a premier institution recognized by the <strong>Board of School Education Haryana (BSEH)</strong>. We have proudly educated thousands of students who have gone on to excel in fields ranging from medicine, engineering, and civil services to agriculture and entrepreneurship — all nurtured through our comprehensive <Link href="/academics"><span className="text-primary font-semibold hover:text-secondary cursor-pointer underline">academic programs</span></Link> from Class VI to XII.
               </p>
               <p>
                 Our roots are deeply Indian, and we pride ourselves on maintaining a balance between modern pedagogical methods and traditional moral values. The school stands as a pillar of education for the entire Jakhouli and Kaithal region.

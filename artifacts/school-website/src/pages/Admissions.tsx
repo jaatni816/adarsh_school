@@ -55,9 +55,9 @@ export default function Admissions() {
   return (
     <div className="pt-[80px] md:pt-[90px] pb-20 w-full min-h-screen bg-gray-50/50">
       <SEO
-        title="Admissions 2025-26"
+        title="School Admission Kaithal Haryana — Adarsh Sr. Sec. School Jakhouli"
         path="/admissions"
-        description="Apply for admission at Adarsh Sr. Sec. School, Jakhouli, Kaithal — Classes VI to XII. Online application, step-by-step process, documents required, and important dates for session 2025-26."
+        description="School admission in Kaithal Haryana made easy at Adarsh Sr. Sec. School Jakhouli — BSEH affiliated school for Classes VI to XII. Online application, step-by-step process, documents required, and important dates for session 2025-26."
       />
 
       {/* Header */}
@@ -73,7 +73,7 @@ export default function Admissions() {
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
             className="text-lg text-primary-foreground/80 max-w-2xl">
-            Join the Adarsh family in Jakhouli, Kaithal. Admissions now open for Classes VI to XII.
+            School admission in Kaithal Haryana — join the Adarsh family in Jakhouli. Admissions open for Classes VI to XII.
           </motion.p>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
             className="w-20 h-1.5 bg-secondary rounded-full mt-4" />
@@ -91,7 +91,7 @@ export default function Admissions() {
               <img src={studentsStudyingImg} alt="Students at Adarsh School" loading="lazy" className="w-full aspect-[16/9] md:aspect-[21/9] object-cover" />
               <div className="bg-white border border-border p-6">
                 <p className="text-foreground/80 leading-relaxed">
-                  Adarsh Senior Secondary School, Jakhouli, Kaithal welcomes students from Class VI onwards. We are committed to providing every student in the Kaithal district access to quality BSEH-affiliated education in a safe, nurturing environment. Join 1,200+ students and 45+ dedicated teachers who make Adarsh School a centre of excellence in rural Haryana.
+                  Looking for school admission in Kaithal, Haryana? Adarsh Senior Secondary School, Jakhouli welcomes students from Class VI onwards. We are committed to providing every student in the Kaithal district access to quality BSEH affiliated education in a safe, nurturing environment. Join 1,200+ students and 45+ dedicated teachers who make Adarsh School Jakhouli a centre of excellence in rural Haryana.
                 </p>
               </div>
             </div>

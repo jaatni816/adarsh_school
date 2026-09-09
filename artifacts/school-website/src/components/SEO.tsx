@@ -6,7 +6,7 @@ interface SEOProps {
   path?: string;
 }
 
-const SITE_NAME = 'Adarsh Sr. Sec. School, Jakhouli';
+const SITE_NAME = 'Adarsh Sr. Sec. School Jakhouli';
 const DEFAULT_IMAGE = '/android-chrome-512x512.png';
 
 const PAGE_LABELS: Record<string, string> = {

@@ -16,9 +16,9 @@ export default function Academics() {
   return (
     <div className="pt-[80px] md:pt-[90px] pb-20 w-full min-h-screen">
       <SEO
-        title="Academics"
+        title="Academics — Adarsh Sr. Sec. School Jakhouli, Kaithal Haryana"
         path="/academics"
-        description="BSEH-affiliated academics at Adarsh Sr. Sec. School, Jakhouli, Kaithal — Classes VI to XII with Science, Commerce & Arts streams. Smart classrooms, science labs, and expert faculty."
+        description="BSEH affiliated academics at Adarsh Sr. Sec. School Jakhouli — Classes VI to XII with Science, Commerce and Arts streams. Smart classrooms, science labs, and expert faculty in Kaithal, Haryana."
       />
 
       {/* Header */}

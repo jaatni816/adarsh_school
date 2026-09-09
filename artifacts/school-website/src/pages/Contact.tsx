@@ -50,9 +50,9 @@ export default function Contact() {
   return (
     <div className="pt-[80px] md:pt-[90px] pb-20 w-full min-h-screen bg-gray-50/50">
       <SEO
-        title="Contact Us"
+        title="Contact — Adarsh Sr. Sec. School Jakhouli, Best School in Kaithal"
         path="/contact"
-        description="Contact Adarsh Sr. Sec. School, Jakhouli, Kaithal, Haryana — phone, email, address and Google Maps. Office hours: Mon-Sat 8 AM–4 PM. Call +91 74041 20200."
+        description="Contact Adarsh Sr. Sec. School Jakhouli — the best school in Kaithal, Haryana. Phone, email, address and Google Maps. Office hours: Mon-Sat 8 AM–4 PM. Call +91 74041 20200."
       />
 
       {/* Hero */}
@@ -150,7 +150,7 @@ export default function Contact() {
           </div>
           <div className="mt-4 bg-secondary/10 border border-secondary/20 rounded-xl p-5">
             <p className="text-sm text-foreground/80 leading-relaxed">
-              <strong className="text-primary">How to reach us:</strong> Adarsh Senior Secondary School is located on the Jakhouli–Kassan Road, Jakhouli, Kaithal district, Haryana.
+              <strong className="text-primary">How to reach the best school in Kaithal:</strong> Adarsh Sr. Sec. School Jakhouli is located on the Jakhouli–Kassan Road, Jakhouli, Kaithal district, Haryana.
               For directions, tap <strong>"Open in Google Maps"</strong> above or call us at{' '}
               <strong className="text-secondary">+91 74041 20200</strong> during school hours.
             </p>

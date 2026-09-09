@@ -83,9 +83,9 @@ export default function Home() {
   return (
     <div className="flex flex-col w-full">
       <SEO
-        title="Home"
+        title="Adarsh School Jakhouli — Best School in Kaithal, Haryana"
         path="/"
-        description="Adarsh Sr. Sec. School, Jakhouli, Kaithal, Haryana — Nurturing rural talent with quality BSEH-affiliated education since 1995. 1200+ students, 45+ teachers, 100% pass rate."
+        description="Adarsh Sr. Sec. School Jakhouli is the best school in Kaithal, Haryana — a BSEH affiliated school offering quality education from Classes VI to XII since 1995. 1200+ students, 45+ teachers, 100% pass rate."
       />
 
       {/* ── Hero Section ── */}
@@ -128,7 +128,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.45 }}
             className="text-base sm:text-xl text-white/85 max-w-2xl mb-4 font-medium"
           >
-            Nurturing rural talent to achieve global standards of excellence since 1995.
+            Nurturing rural talent to achieve global standards — recognized as one of the best schools in Kaithal since 1995.
           </motion.p>
 
           <motion.p
@@ -137,7 +137,7 @@ export default function Home() {
             transition={{ duration: 0.7, delay: 0.55 }}
             className="text-sm sm:text-base text-white/70 mb-10 font-normal"
           >
-            Affiliated to Board of School Education Haryana (BSEH) &bull; Jakhouli, Kaithal, Haryana
+            BSEH affiliated school in Jakhouli, Kaithal, Haryana &bull; Classes VI to XII
           </motion.p>
 
           {/* CTA Buttons — clearly visible */}
@@ -214,10 +214,10 @@ export default function Home() {
                 Empowering Rural India Through Quality Education
               </h2>
               <p className="text-lg text-foreground/80 leading-relaxed">
-                Located in the serene environment of Jakhouli village, Adarsh Senior Secondary School has been a beacon of learning for over two decades. We believe that true education goes beyond textbooks — shaping character, instilling values, and preparing students for the challenges of tomorrow.
+                Located in the serene environment of Jakhouli village, Adarsh Senior Secondary School has been a beacon of learning for over two decades — widely regarded as one of the best schools in Kaithal. We believe that true education goes beyond textbooks — shaping character, instilling values, and preparing students for the challenges of tomorrow.
               </p>
               <p className="text-base text-foreground/70 leading-relaxed">
-                Our institution proudly serves the Kaithal district with a strong tradition of academic discipline, cultural richness, and community service. Every child who enters our gates carries with them the hope of a brighter Haryana.
+                As a BSEH affiliated school in Jakhouli, we proudly serve the Kaithal district with a strong tradition of academic discipline, cultural richness, and community service. Every child who enters our gates carries with them the hope of a brighter Haryana.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 pt-4">
                 <div className="flex items-start gap-4">

@@ -66,9 +66,9 @@ export default function Gallery() {
   return (
     <div className="pt-[80px] md:pt-[90px] pb-20 w-full min-h-screen">
       <SEO
-        title="Photo Gallery"
+        title="Photo Gallery — Adarsh School Jakhouli, Kaithal"
         path="/gallery"
-        description="Browse photos of Adarsh Sr. Sec. School, Jakhouli, Kaithal — campus life, morning assemblies, sports events, annual functions, student achievements and school activities."
+        description="Browse photos of Adarsh School Jakhouli — campus life, morning assemblies, sports events, annual functions, student achievements at one of the best schools in Kaithal, Haryana."
       />
 
       {/* Header */}

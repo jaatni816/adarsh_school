@@ -54,9 +54,9 @@ export default function Faculty() {
   return (
     <div className="pt-[80px] md:pt-[90px] pb-20 w-full min-h-screen">
       <SEO
-        title="Faculty & Staff"
+        title="Faculty — Adarsh Sr. Sec. School Jakhouli, Kaithal"
         path="/faculty"
-        description="Meet the dedicated faculty of Adarsh Sr. Sec. School, Jakhouli, Kaithal — BSEH-certified, experienced teachers with 8-20 years of expertise shaping rural Haryana's future."
+        description="Meet the dedicated BSEH certified teachers at Adarsh Sr. Sec. School Jakhouli, Kaithal — experienced educators with 8-20 years of expertise shaping rural Haryana's future."
       />
 
       {/* Header */}
